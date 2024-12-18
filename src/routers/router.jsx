@@ -2,7 +2,7 @@ import React from 'react';
 import { createBrowserRouter} from 'react-router-dom';
 import App from '../App';
 import Home from '../pages/home/Home';
-import CategoryPage from '../pages/category/categoryPage';
+
 import Search from '../pages/search/Search';
 import ShopPage from '../pages/shop/ShopPage';
 import SingleProduct from '../pages/shop/productDetails/SingleProduct';
@@ -23,6 +23,7 @@ import ManageProduct from '../pages/dashboard/admin/manageProducts/ManageProduct
 import UpdateProduct from '../pages/dashboard/admin/manageProducts/UpdateProduct';
 import ManagaeUser from '../pages/dashboard/admin/manageUsers/ManagaeUser';
 import ManageOrder from '../pages/dashboard/admin/manageOrders/ManageOrder';
+import { CategoryPage } from '../pages/category/categoryPage';
 
 
 
