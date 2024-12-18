@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import products from "../../data/products.json"
 import ProductCards from '../shop/ProductCards';
 
-export const CategoryPage = () => {
+const CategoryPage = () => {
 
     const {categoryName}=useParams();
     const [filteredProducts,setFilteredProducts]=useState([]);
@@ -33,3 +33,4 @@ export const CategoryPage = () => {
   )
 }
 
+export default CategoryPage

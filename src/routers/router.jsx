@@ -23,7 +23,8 @@ import ManageProduct from '../pages/dashboard/admin/manageProducts/ManageProduct
 import UpdateProduct from '../pages/dashboard/admin/manageProducts/UpdateProduct';
 import ManagaeUser from '../pages/dashboard/admin/manageUsers/ManagaeUser';
 import ManageOrder from '../pages/dashboard/admin/manageOrders/ManageOrder';
-import { CategoryPage } from '../pages/category/categoryPage';
+import CategoryPage from '../pages/category/CategoryPage'
+
 
 
 
