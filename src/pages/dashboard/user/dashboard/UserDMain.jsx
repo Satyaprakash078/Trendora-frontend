@@ -49,7 +49,7 @@ const UserDMain = () => {
   return (
     <div className='p-4'>
         <div>
-            <h1 className='text-2xl font-semibold mb-4'>UserDMain</h1>
+            <h1 className='text-2xl font-semibold mb-4'>{user?.username}</h1>
             <p className='text-gray-500'>Hi,{user?.username}! Welcome to your dashboard</p>
         </div>
         <UserStats stats={stats}/>
