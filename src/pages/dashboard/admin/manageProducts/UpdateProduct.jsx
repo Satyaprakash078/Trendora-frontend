@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useGetProductByIdQuery, useUpdateProductMutation } from '../../../../redux/features/products/productsApi';
+import { useGetProductBySlugQuery, useUpdateProductMutation } from '../../../../redux/features/products/productsApi';
 import { useSelector } from 'react-redux';
 import TextInput from '../addProduct/TextInput';
 import SellectInput from '../addProduct/SellectInput';
@@ -29,7 +29,7 @@ const colors=[
 
 const UpdateProduct = () => {
     const navigate=useNavigate();
-    const {id}= useParams();
+    const {slug}= useParams();
     const {user}= useSelector((state)=> state.auth);
     const [newImage,setNewImage]=useState(null);
      const [product,setProduct]= useState({
@@ -40,7 +40,7 @@ const UpdateProduct = () => {
             description:'', 
             image:''
         })
-    const {data:productData,isLoading:prodcutLoading,error}= useGetProductByIdQuery(id);
+    const {data:productData,isLoading:prodcutLoading,error}= useGetProductBySlugQuery(slug);
     const {name,category,color,description,price,image:imageUrl}= productData?.product || {}
     const [updateProduct,{isLoading:isUpdating,error:updateError}]= useUpdateProductMutation();
      console.log(updateError)
@@ -80,7 +80,7 @@ const UpdateProduct = () => {
         console.log("Updated Data:", updatedData);
 
         try {
-             await updateProduct({id,...updatedData}).unwrap();
+             await updateProduct({id: productData?.product?._id,...updatedData}).unwrap();
              alert('Product updated successfully!')
              navigate('/dashboard/manage-products')
         } catch (error) {

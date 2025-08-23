@@ -1,16 +1,16 @@
 import React, { useState } from 'react'
 import { useSelector } from 'react-redux';
 import {useParams} from 'react-router-dom'
-import { useGetProductByIdQuery } from '../../../redux/features/products/productsApi';
+import { useGetProductBySlugQuery } from '../../../redux/features/products/productsApi';
 import { useAddReviewMutation } from '../../../redux/features/reviews/reviewsApi';
 
 const PostAReview = ({isModalOpen,handleClose}) => {
-     const {id}= useParams();
+     const {slug}= useParams();
      const {user}= useSelector((state)=> state.auth)
     const [rating,setRating]=useState(0);
     const [comment,setComment]= useState('');
     
-    const {refetch}=useGetProductByIdQuery(id, {skip: !id});
+    const {refetch}=useGetProductBySlugQuery(slug, {skip: !slug});
     const [AddReview]=useAddReviewMutation();
 
     const handleRating=(value)=>{
@@ -19,10 +19,11 @@ const PostAReview = ({isModalOpen,handleClose}) => {
    
     const handleSubmit=async (e)=>{
         e.preventDefault();
+
         const newComment= {
             comment : comment,
             rating : rating,
-            productId : id,
+            productId : productData?.product?._id,
             userId : user?._id
         }
         try {
