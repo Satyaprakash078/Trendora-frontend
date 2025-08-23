@@ -96,7 +96,7 @@ const ShopPage = () => {
                                     {index + 1}
                                 </button>
                             ))
-                        }
+                        }   
                         <button disabled={currentPage === totalPages}
                          onClick={()=>handlePageChange(currentPage+1)}
                         className='bg-gray-200 text-gray-700 px-4 py-2

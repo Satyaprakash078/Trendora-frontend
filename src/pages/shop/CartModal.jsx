@@ -6,6 +6,7 @@ import { removeFromCart, updateQuantity } from '../../redux/features/cart/cartSl
 const CartModal = ({products,isOpen,onClose}) => {
 
     const dispath=useDispatch();
+    
     const handleQuantity=(type,id)=>{
         const payload={type,id}
         dispath(updateQuantity(payload))

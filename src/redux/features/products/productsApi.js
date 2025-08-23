@@ -25,10 +25,10 @@ const productsApi = createApi({
             },
             providesTags: ['Products'],
         }),
-        //get a product by id
-        getProductById: builder.query({
-            query: (id) => `/${id}`, // e.g- /1
-            providesTags: (result, error, id) => [{ type: "Products", id }]
+        //get a product by slug
+        getProductBySlug: builder.query({
+            query: (slug) => `/${slug}`, // e.g- /1
+            providesTags: (result, error, slug) => [{ type: "Products", slug }]
         }),
         //add product
         addProduct: builder.mutation({
@@ -67,7 +67,7 @@ const productsApi = createApi({
 })
 
 export const {useAddProductMutation,useDeleteProductMutation,
-             useGetProductByIdQuery,useGetProductsQuery,
+             useGetProductBySlugQuery,useGetProductsQuery,
              useGetRelatedProductsQuery,useUpdateProductMutation} = productsApi;
            
   export default productsApi;

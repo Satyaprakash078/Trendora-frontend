@@ -35,7 +35,7 @@ const OrderSummary = () => {
       const result= await stripe.redirectToCheckout({
         sessionId : session.id
       })
-      console.log("Result:",result)
+      //console.log("Result:",result)
       if(result.error){
         console.log("Error:",result.error)
       }

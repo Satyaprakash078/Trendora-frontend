@@ -3,14 +3,14 @@ import { Link, useParams } from 'react-router-dom'
 import RatingStars from '../../../components/RatingStars';
 import { useDispatch } from 'react-redux';
 import { addTocart } from '../../../redux/features/cart/cartSlice';
-import { useGetProductByIdQuery } from '../../../redux/features/products/productsApi';
+import { useGetProductBySlugQuery } from '../../../redux/features/products/productsApi';
 import ReviewsCard from '../reviews/ReviewsCard';
 
 
 const SingleProduct = () => {
-    const {id}=useParams();
+    const {slug}=useParams();
     const dispatch = useDispatch();
-    const {data,error,isLoading}=useGetProductByIdQuery(id);
+    const {data,error,isLoading}=useGetProductBySlugQuery(slug);
   
     const SingleProduct = data?.product || {};
     const productReviews = data?.reviews || [];
@@ -31,7 +31,7 @@ const SingleProduct = () => {
            <div className='section__subheader space-x-2'>
                 <span className='hover:text-red-500'><Link to='/'>home</Link></span>
                 <i className="ri-arrow-right-s-fill"></i>
-                <span className='hover:text-red-500'><Link to='/'>shop</Link></span>
+                <span className='hover:text-red-500'><Link to='/shop'>shop</Link></span>
                 <i className="ri-arrow-right-s-fill"></i>
                 <span className='hover:text-red-500'>{SingleProduct.name} </span>
            </div>
@@ -49,7 +49,7 @@ const SingleProduct = () => {
                  <div  className='md:w-1/2 w-full'> 
                       <h3 className='text-2xl font-semibold mb-4'>{SingleProduct?.name}</h3>
                       <p className='text-xl text-red-500 mb-4 '>${SingleProduct?.price} 
-                        {SingleProduct?.oldPrice && <s className='px-2'> $130</s>}
+                        {SingleProduct?.oldPrice && <s className='px-2'>${SingleProduct?.oldPrice}</s>}
                       </p>
                       <p className='text-blue-500 mb-4'>{SingleProduct?.description}</p>
 

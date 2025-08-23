@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import { getBaseURL } from '../utils/baseUrl';
-import { data } from 'react-router-dom';
 import TimelineSteps from './TimelineSteps';
 
 export const PaymentSuccess = () => {

@@ -5,7 +5,7 @@ import TimelineSteps from '../../../components/TimelineSteps';
 
 const OrderDetails = () => {
     const { orderId } = useParams();
-    console.log(orderId)
+    //console.log(orderId)
     const { data: order, error, isLoading } = useGetOrdersByIdQuery(orderId);
     // console.log(order)
     if (isLoading) return <div>Loading...</div>
