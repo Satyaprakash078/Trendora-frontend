@@ -10,7 +10,7 @@ const PostAReview = ({isModalOpen,handleClose}) => {
     const [rating,setRating]=useState(0);
     const [comment,setComment]= useState('');
     
-    const {data: productData, refetch}=useGetProductBySlugQuery(slug, {skip: !slug});
+    const {refetch}=useGetProductBySlugQuery(slug, {skip: !slug});
     const [AddReview]=useAddReviewMutation();
 
     const handleRating=(value)=>{
