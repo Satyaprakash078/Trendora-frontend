@@ -16,11 +16,11 @@ const reviewsApi= createApi({
                 method: 'POST',
                 body: reviewData
             }),
-            invalidatesTags: (result,error,{postId})=>[{type:"Reviews",id:postId}],
+            invalidatesTags: (result,error,{productId })=>[{type:"Reviews",id:productId }],
         }),
         // get reviews count
         GetReviewsCount: builder.query({
-            query: (postId) => ({
+            query: () => ({
                 url: `/total-reviews`,
             }),
         }),
@@ -29,7 +29,10 @@ const reviewsApi= createApi({
             query: (userId) => ({
                 url: `/${userId}`,
             }),
-            providesTags:(result)=>result ? [{type:"Reviews",id:result[0]?.email}] : []
+             providesTags: (result, error, userId) =>
+        result?.reviews 
+          ? [{ type: "Reviews", id: userId }]
+          : [],
         }),
     }),
 })

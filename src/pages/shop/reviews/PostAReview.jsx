@@ -10,7 +10,7 @@ const PostAReview = ({isModalOpen,handleClose}) => {
     const [rating,setRating]=useState(0);
     const [comment,setComment]= useState('');
     
-    const {refetch}=useGetProductBySlugQuery(slug, {skip: !slug});
+    const { data: productData, refetch } =useGetProductBySlugQuery(slug, {skip: !slug});
     const [AddReview]=useAddReviewMutation();
 
     const handleRating=(value)=>{
@@ -19,11 +19,15 @@ const PostAReview = ({isModalOpen,handleClose}) => {
    
     const handleSubmit=async (e)=>{
         e.preventDefault();
+         if (!productData?.product?._id) {
+                alert("Product not found");
+                return;
+        }
 
         const newComment= {
             comment : comment,
             rating : rating,
-            productId : productData?.product?._id,
+            productId: productData.product._id,
             userId : user?._id
         }
         try {
